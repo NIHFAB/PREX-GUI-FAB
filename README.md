@@ -8,7 +8,6 @@ All software is protected under the GNU General Public License, version 3 (GPLv3
 The first step is to draw user input from the GUI widgets into a single string, which can ten be sent to Arduino code. The following functions are created to draw the inputs. 
 
 construct_data_string_left():..
-
 '''
 
 def construct_data_string_left(): 
@@ -26,7 +25,6 @@ def construct_data_string_left():
     control_type = str(main.p1.CONTROLLEROPTIONS.get())
     sendgains = main.p1.SENDGAINSONOFF.get()
     save_settings_oi_s = str(main.p1.SAVESETTINGS.get())  # str(main.p1.SAVESETTINGS.get()) # 0 is no, 1 is 
-
 '''
 
 construct_data_string_right():..
