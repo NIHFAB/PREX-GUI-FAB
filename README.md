@@ -10,13 +10,9 @@ The first step is to draw user input. The following functions are created to dra
 1. functions named as 
 
 construct_data_string_left():..
-
 construct_data_string_right():..
-
 construct_test_param_string():..
-
 construct_gains_string():..
-
 construct_pot_string():..
 
 # Important Dependencies:
