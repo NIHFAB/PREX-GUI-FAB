@@ -10,6 +10,7 @@ The first step is to draw user input from the GUI widgets into a single string, 
 construct_data_string_left():..
 
 '''
+
 def construct_data_string_left(): 
     #  pulls data from buttons and formats into proper string, separated with '/'
     This function pulls data from the GUI widgets and formats into a single string, which can then be sent to
@@ -25,6 +26,7 @@ def construct_data_string_left():
     control_type = str(main.p1.CONTROLLEROPTIONS.get())
     sendgains = main.p1.SENDGAINSONOFF.get()
     save_settings_oi_s = str(main.p1.SAVESETTINGS.get())  # str(main.p1.SAVESETTINGS.get()) # 0 is no, 1 is 
+
 '''
 
 construct_data_string_right():..
