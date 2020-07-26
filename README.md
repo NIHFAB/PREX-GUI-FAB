@@ -11,11 +11,11 @@ construct_data_string_left():..
 
 '''
 def construct_data_string_left():  # pulls data from buttons and formats into proper string, separated with '/'
-    """ This function pulls data from the GUI widgets and formats into a single string, which can then be sent to
+    This function pulls data from the GUI widgets and formats into a single string, which can then be sent to
     Arduino code. This structure is mirrored in Button_Parameters.ino (to decode the string) for reference. The
     names for the strings pulled from widgets exactly match the variable names in the Arduino code
     (exo_teensy_menu___.09).
-    """
+   
     global settsStrML
     global fsm_type
     global control_type
