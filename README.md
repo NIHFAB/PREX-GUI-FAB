@@ -10,4 +10,4 @@ All software is protected under the GNU General Public License, version 3 (GPLv3
 After downloading the PRex-GUI folder, add a working copy of pylsl (from Lab Streaming Layer) and a folder containing a working copy of LabRecorder to the folder to make PRex-GUI.py run.
 
 # Publications
-If using this software, please cite "Development of a User Interface for Wearable Exoskeleton Technology in Pediatric Populations." This work provides an overview of the software and recommendations for how to modify this software for your project. 
+If using this software, please cite "An Open Source Graphical User Interface for Wearable Robotic Technology." This work provides an overview of the software and recommendations for how to modify this software for your project. 
