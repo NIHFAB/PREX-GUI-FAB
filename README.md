@@ -10,7 +10,9 @@ The first step is to draw user input from the GUI widgets into a single string, 
 construct_data_string_left():..
 
 '''
-def construct_data_string_left():  # pulls data from buttons and formats into proper string, separated with '/'
+def construct_data_string_left(): 
+
+    pulls data from buttons and formats into proper string, separated with '/'
     This function pulls data from the GUI widgets and formats into a single string, which can then be sent to
     Arduino code. This structure is mirrored in Button_Parameters.ino (to decode the string) for reference. The
     names for the strings pulled from widgets exactly match the variable names in the Arduino code
