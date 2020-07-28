@@ -10,7 +10,7 @@ All software is protected under the GNU General Public License, version 3 (GPLv3
 4. 1024x768 minimum screen resolution
 5. Python 3.5 or newer
 
-# Required softwares
+# Required software
 To implement the GUI 
 1. Python: installation link: https://www.python.org/downloads/ (The minimum 3.5 version)
 2. Two additional python libraries
@@ -22,7 +22,8 @@ To implement the GUI
 3. Lab Streaming Layer (data synchronization and saving): download link: https://github.com/sccn/labstreaminglayer
 4. Unity (for realtime data visualization): download link: https://store.unity.com/download-nuo 
 
-# Step 1. data entry functions
+# GUI 
+Step 1. data entry functions
 
 The first step is to draw user input from the GUI widgets into a single string, which can ten be sent to Arduino code. The following functions are created to draw the inputs. 
 
