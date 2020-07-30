@@ -1,10 +1,10 @@
 ## Table of contents
 * [Overview](#Overview)
-* [Sytem requirements](#System requirements)
-* [Software installation](#Software installation)
-* [Functionalities of the script](#Functionalities of the script)
-* [Step-by-step](# GUI operation tutorial)
-* [Publication](# Publication)
+* [Sytem requirements](#System_requirements)
+* [Software installation](#Software_installation)
+* [Functionalities of the script](#Functionalities_of_the script)
+* [Step-by-step](#GUI_operation_tutorial)
+* [Publication](#Publication)
 
 
 # Overview
