@@ -104,7 +104,9 @@ MainMenuPage(Page);
 TestingPage(Page);
 EstimPage(Page);
 ```
-# Real-time data streaming by Lab Streaming Layer
+# Real-time data streaming
+
+* Lab streaming layer interface is created in the script to collect the exoskeleton data from both left and right leg
 ```
 # == Left Leg LSL ===
 info_LL = StreamInfo('LeftLeg', 'Exoskeleton', 8, 100, 'float32', 'JiComp')  # creates 8 channel LSL stream
