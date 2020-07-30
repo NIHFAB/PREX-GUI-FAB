@@ -30,6 +30,12 @@ To implement the GUI
 
 The first step is to draw user input from the GUI widgets into a single string, which can ten be sent to Arduino code. The following functions are created to draw the inputs. 
 
+```
+$ cd ../lorem
+$ npm install
+$ npm start
+```
+
 '''
 $ construct_data_string_left():..
 
