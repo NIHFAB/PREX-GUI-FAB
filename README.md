@@ -1,4 +1,13 @@
-# PRex-Interface Overview
+## Table of contents
+* [Overview](#Overview)
+* [Sytem requirements](#System requirements)
+* [Software installation](#Software installation)
+* [Functionalities of the script](#Functionalities of the script)
+* [Step-by-step](# GUI operation tutorial)
+* [Publication](# Publication)
+
+
+# Overview
 Open source code for the NIH PRex Exoskeleton Graphical User Interface (GUI). Includes shell AVR-C (Arduino) operating system, Python GUI, Unity plotting application, and an MIT App Inventor project (phone app for Android).
 
 All software is protected under the GNU General Public License, version 3 (GPLv3), found in 'LICENSE.md'. 
@@ -10,7 +19,7 @@ All software is protected under the GNU General Public License, version 3 (GPLv3
 4. 1024x768 minimum screen resolution
 5. Python 3.5 or newer
 
-# Software Installation
+# Software installation
 To implement the GUI 
 1. Python: installation link: https://www.python.org/downloads/ (The minimum 3.5 version)
 2. Three additional python libraries
@@ -30,7 +39,7 @@ To implement the GUI
 
 After downloading the PRex-GUI folder, add a working copy of pylsl (from Lab Streaming Layer) and a folder containing a working copy of LabRecorder to the folder to make PRex-GUI.py run.
 
-# functionalities of the Python Script
+# functionalities of the script
 The script can be categorized into the following blocks to help understand its overall structure. 
 
 ## Block 1: setup communication
