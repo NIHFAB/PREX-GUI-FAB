@@ -1,7 +1,10 @@
 ## Table of contents
 * [Overiew](#Overview)
 * [System requirements](#system-requirements)
-* [Setup](#setup)
+* [Software installation](#software-installation)
+* [Functionalities of the Script](#functionalities-of-the-script)
+* [Step-by-step tutorial](#step-by-step-tutorial)
+* [Publication](#publication)
 
 
 # Overview
@@ -36,7 +39,7 @@ To implement the GUI
 
 After downloading the PRex-GUI folder, add a working copy of pylsl (from Lab Streaming Layer) and a folder containing a working copy of LabRecorder to the folder to make PRex-GUI.py run.
 
-# functionalities of the script
+# Functionalities of the script
 The script can be categorized into the following blocks to help understand its overall structure. 
 
 ## Block 1: setup communication
