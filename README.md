@@ -126,6 +126,13 @@ for c in ["TimeRL", "AngleRL", "TorqueRL", "FSR RL", "CurrentRL", "FSM StateRL",
         .append_child_value("label", c)
 outlet_RL = StreamOutlet(info_RL)  # creates outlet for right leg
 ```
+# Real-time data visualization
+
+* Unity plot is created to visualize all sensor data
+```
+plotting_subprocess = subprocess.Popen(os.path.normpath("./backend_plotting/Static Grip Device.exe"))
+```
+
 # Step-by-step tutorial
 
 # Publications
