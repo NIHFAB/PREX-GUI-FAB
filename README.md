@@ -30,10 +30,15 @@ To implement the GUI
 
 The first step is to draw user input from the GUI widgets into a single string, which can ten be sent to Arduino code. The following functions are created to draw the inputs. 
 '''
+
 $ construct_data_string_left():..
+
 $ construct_data_string_right():..
+
 $ construct_test_param_string():..
+
 $ construct_gains_string():..
+
 $ construct_pot_string(leg):..
 '''
 
