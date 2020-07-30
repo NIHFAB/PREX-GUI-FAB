@@ -2,7 +2,7 @@
 * [Overiew](#Overview)
 * [System requirements](#system-requirements)
 * [Software installation](#software-installation)
-* [Functionalities of the Script](#functionalities-of-the-script)
+* [Functionalities of the script](#functionalities-of-the-script)
 * [Step-by-step tutorial](#step-by-step-tutorial)
 * [Publications](#publications)
 
