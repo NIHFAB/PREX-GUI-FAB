@@ -13,14 +13,22 @@ All software is protected under the GNU General Public License, version 3 (GPLv3
 # Software Installation
 To implement the GUI 
 1. Python: installation link: https://www.python.org/downloads/ (The minimum 3.5 version)
-2. Two additional python libraries
+2. Three additional python libraries
    1) pyserial (for serial communication between GUI and exoskeleton): 
       How to install: go to your command prompt and run it as administrator and type: pip install pyserial
    2) pybluez  (for bluetooth communication between GUI and exoskeleton):
       How to install: follow this link to install pybluez: https://pybluez.readthedocs.io/en/latest/install.html
+   3) TkInter (for GUI features such as buttons, bars, and textboxes to be created): 
+      How to install: download Active Tcl-8.6 (or Active Tcl-8.5).https://www.activestate.com/products/tcl/downloads/
 3. Pycharm (python IDE for code development): installation link: https://www.jetbrains.com/pycharm/download/#section=windows
 3. Lab Streaming Layer (data synchronization and saving): download link: https://github.com/sccn/labstreaminglayer
 4. Unity (for realtime data visualization): download link: https://store.unity.com/download-nuo 
+
+## Important Dependencies:
+1. Lab Streaming Layer (LSL) 
+2. Python Libraries (time, tkinter, os, sys, pylsl, pyserial, subprocess, PyBluez)
+
+After downloading the PRex-GUI folder, add a working copy of pylsl (from Lab Streaming Layer) and a folder containing a working copy of LabRecorder to the folder to make PRex-GUI.py run.
 
 # functionalities of the Python Script
 The script can be categorized into the following blocks to help understand its overall structure. 
@@ -88,11 +96,7 @@ TestingPage(Page);
 EstimPage(Page);
 ```
 
-# Important Dependencies:
-1. Lab Streaming Layer (LSL)
-2. Python Libraries (time, tkinter, os, sys, pylsl, pyserial, subprocess, PyBluez)
 
-After downloading the PRex-GUI folder, add a working copy of pylsl (from Lab Streaming Layer) and a folder containing a working copy of LabRecorder to the folder to make PRex-GUI.py run.
 
 # Publications
 If using this software, please cite "An Open Source Graphical User Interface for Wearable Robotic Technology." This work provides an overview of the software and recommendations for how to modify this software for your project. 
