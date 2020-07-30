@@ -108,6 +108,7 @@ EstimPage(Page);
 
 * Lab streaming layer interface is created in the script to collect the exoskeleton data from both left and right leg
 ```
+lab_recorder_subprocess = subprocess.Popen(os.path.normpath("./LabRecorder/LabRecorder.exe"))
 # == Left Leg LSL ===
 info_LL = StreamInfo('LeftLeg', 'Exoskeleton', 8, 100, 'float32', 'JiComp')  # creates 8 channel LSL stream
 channels = info_LL.desc().append_child("channels") # append some meta-data
@@ -128,7 +129,7 @@ outlet_RL = StreamOutlet(info_RL)  # creates outlet for right leg
 ```
 # Real-time data visualization
 
-* Unity plot is created to visualize all sensor data
+* Unity interface is created to visualize all sensor data
 ```
 plotting_subprocess = subprocess.Popen(os.path.normpath("./backend_plotting/Static Grip Device.exe"))
 ```
