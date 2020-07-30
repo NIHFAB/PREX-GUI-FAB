@@ -1,8 +1,8 @@
 ## Table of contents
-* [Overview](#Overview)
-* [Sytem requirements](#System_requirements)
-* [Software installation](#Software_installation)
-* [Functionalities of the script](#Functionalities_of_the_script)
+* [Overview](#overview)
+* [Sytem requirements](#system_requirements)
+* [Software installation](#software_installation)
+* [Functionalities of the script](#functionalities_of_the_script)
 * [Step-by-step](#GUI_operation_tutorial)
 * [Publication](#Publication)
 
