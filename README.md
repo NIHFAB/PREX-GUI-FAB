@@ -4,7 +4,7 @@
 * [Software installation](#software-installation)
 * [Functionalities of the Script](#functionalities-of-the-script)
 * [Step-by-step tutorial](#step-by-step-tutorial)
-* [Publication](#publication)
+* [Publications](#publications)
 
 
 # Overview
@@ -104,8 +104,7 @@ MainMenuPage(Page);
 TestingPage(Page);
 EstimPage(Page);
 ```
-
-
+# Step-by-step tutorial
 
 # Publications
 If using this software, please cite "An Open Source Graphical User Interface for Wearable Robotic Technology." This work provides an overview of the software and recommendations for how to modify this software for your project. 
