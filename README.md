@@ -1,5 +1,5 @@
 ## Table of contents
-* [Overiew](#Overview)
+* [Overview](#Overview)
 * [System requirements](#system-requirements)
 * [Software installation](#software-installation)
 * [Functionalities of the script](#functionalities-of-the-script)
