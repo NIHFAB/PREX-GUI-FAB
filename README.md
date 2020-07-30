@@ -23,16 +23,16 @@ To implement the GUI
 4. Unity (for realtime data visualization): download link: https://store.unity.com/download-nuo 
 
 # functionalities of the Python Script
+The script can be categorized into the following blocks to help understand its overall structure. 
 
-## Step 1: setup communication
-* This step is to set up the communication mode by either cable-based serial or bluetooth.
+## Block 1: setup communication
+* This block is to set up the communication mode by either cable-based serial or bluetooth.
 ```
 connect_to_exo(comType, address1, address2)
 ```
 
-
-## Step 2: data entry functions
-* This step is to draw user input from the GUI widgets into a single string, which can then be sent to Arduino controller in exoskeleton. The following functions are created to draw the inputs. 
+## Block 2: data entry functions
+* This block is to draw user input from the GUI widgets into a single string, which can then be sent to Arduino controller in exoskeleton. The following functions are created to draw the inputs. 
 
 ### Prepare the input data
 ```
@@ -46,7 +46,10 @@ construct_pot_string(leg):..
 ```
 Send_data(data, prefix = ‘Y’, parse = ‘Y’, leg = ‘B’)
 ```
-## step 3: data receiving functions
+## Block 3: data receiving functions
+* This block is to control data collection cycle and perform data collection in calibration mode, and coordinate with lab streaming layer to collect the walking data during walking mode. 
+
+### start/stop the data collection cycle
 ```
 start_trial();
 ```
