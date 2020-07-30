@@ -65,7 +65,17 @@ receive_and_save_data(); (work together with LSL package)
 receive_ser_data_and_send2LSL();
 receive_ble_data_and_send2LSL();
 ```
-## Modular control panel (written in class)
+## Block 4: Modular control panel (written in class)
+
+* MainView is created as a frame to inherit different control pages using TkInter functionalities
+```
+root = tk.Tk()
+root.wm_geometry("1330x750")
+main = MainView(master=root)
+main.pack(side="top", fill="both", expand=True)
+root.mainloop()
+```
+
 MainView(tk.Frame): construct the frame with configurable control panels.
 
 Page(tk.Frame): view the selected page
