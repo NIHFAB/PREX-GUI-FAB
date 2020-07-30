@@ -29,6 +29,7 @@ To implement the GUI
 ## Step 2. data entry functions
 
 The first step is to draw user input from the GUI widgets into a single string, which can ten be sent to Arduino code. The following functions are created to draw the inputs. 
+
 '''
 
 $ construct_data_string_left():..
