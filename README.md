@@ -33,13 +33,20 @@ connect_to_exo(comType, address1, address2)
 
 ## Step 2. data entry functions
 
+### Prepare the input data
 * This step is to draw user input from the GUI widgets into a single string, which can then be sent to Arduino controller in exoskeleton. The following functions are created to draw the inputs. 
+
+### Prepare the input data
 ```
 construct_data_string_left():..
 construct_data_string_right():..
 construct_test_param_string():..
 construct_gains_string():..
 construct_pot_string(leg):..
+```
+### Send the input data to the micro-controller in the robotic
+```
+Send_data(data, prefix = ‘Y’, parse = ‘Y’, leg = ‘B’)
 ```
 
 # Important Dependencies:
