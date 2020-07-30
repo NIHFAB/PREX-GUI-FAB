@@ -25,11 +25,15 @@ To implement the GUI
 # functionalities of the Python Script
 
 ## Step 1. setup communication
+* This step is to set up the communication mode by either cable-based serial or bluetooth.
+```
+connect_to_exo(comType, address1, address2)
+```
+
 
 ## Step 2. data entry functions
 
-The first step is to draw user input from the GUI widgets into a single string, which can ten be sent to Arduino code. The following functions are created to draw the inputs. 
-
+* This step is to draw user input from the GUI widgets into a single string, which can then be sent to Arduino controller in exoskeleton. The following functions are created to draw the inputs. 
 ```
 construct_data_string_left():..
 construct_data_string_right():..
