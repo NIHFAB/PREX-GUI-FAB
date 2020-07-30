@@ -24,8 +24,8 @@ To implement the GUI
 3. Lab Streaming Layer (data synchronization and saving): download link: https://github.com/sccn/labstreaminglayer
 4. Unity (for realtime data visualization): download link: https://store.unity.com/download-nuo 
 
-## Important Dependencies:
-1. Lab Streaming Layer (LSL) 
+## Important Dependencies (Python script need them to run properly)
+1. Lab Streaming Layer (LSL)  Libararies (the LabRecorder control panel and LabRecorder interface in python environment)
 2. Python Libraries (time, tkinter, os, sys, pylsl, pyserial, subprocess, PyBluez)
 
 After downloading the PRex-GUI folder, add a working copy of pylsl (from Lab Streaming Layer) and a folder containing a working copy of LabRecorder to the folder to make PRex-GUI.py run.
