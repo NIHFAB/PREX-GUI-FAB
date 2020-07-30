@@ -104,7 +104,7 @@ MainMenuPage(Page);
 TestingPage(Page);
 EstimPage(Page);
 ```
-# Real-time data streaming
+## Block 5: Real-time data streaming
 
 * Lab streaming layer interface is created in the script to collect the exoskeleton data from both left and right leg
 ```
@@ -127,7 +127,7 @@ for c in ["TimeRL", "AngleRL", "TorqueRL", "FSR RL", "CurrentRL", "FSM StateRL",
         .append_child_value("label", c)
 outlet_RL = StreamOutlet(info_RL)  # creates outlet for right leg
 ```
-# Real-time data visualization
+## Block 6: Real-time data visualization
 
 * Unity interface is created to visualize all sensor data
 ```
