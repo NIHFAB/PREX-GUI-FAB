@@ -108,25 +108,20 @@ EstimPage(Page);
 ```
 # == Left Leg LSL ===
 info_LL = StreamInfo('LeftLeg', 'Exoskeleton', 8, 100, 'float32', 'JiComp')  # creates 8 channel LSL stream
-
-# append some meta-data
-channels = info_LL.desc().append_child("channels")
+channels = info_LL.desc().append_child("channels") # append some meta-data
 for c in ["TimeLL", "AngleLL", "TorqueLL", "FSR LL", "CurrentLL", "FSM StateLL", "Torque SetpointLL",
           "Position SetpointLL"]:
     channels.append_child("channel") \
         .append_child_value("label", c)
-
 outlet_LL = StreamOutlet(info_LL)  # creates outlet for left leg
 
 # == Right Leg LSL ===
 info_RL = StreamInfo('RightLeg', 'Exoskeleton', 8, 100, 'float32', 'JiComp')  # creates 8 channel LSL stream
-# append some meta-data
-channels = info_RL.desc().append_child("channels")
+channels = info_RL.desc().append_child("channels") # append some meta-data
 for c in ["TimeRL", "AngleRL", "TorqueRL", "FSR RL", "CurrentRL", "FSM StateRL", "Torque SetpointRL",
           "Position SetpointRL"]:
     channels.append_child("channel") \
         .append_child_value("label", c)
-
 outlet_RL = StreamOutlet(info_RL)  # creates outlet for right leg
 ```
 # Step-by-step tutorial
