@@ -3,14 +3,14 @@ Open source code for the NIH PRex Exoskeleton Graphical User Interface (GUI). In
 
 All software is protected under the GNU General Public License, version 3 (GPLv3), found in 'LICENSE.md'. 
 
-## System requirements
+# System requirements
 1. 64-bit versions of Microsoft Windows 10, 8
 2. 2 GB RAM minimum, 8 GB RAM recommended
 3. 2.5 GB hard disk space, SSD recommended
 4. 1024x768 minimum screen resolution
 5. Python 3.5 or newer
 
-## Software Installation
+# Software Installation
 To implement the GUI 
 1. Python: installation link: https://www.python.org/downloads/ (The minimum 3.5 version)
 2. Two additional python libraries
@@ -22,11 +22,11 @@ To implement the GUI
 3. Lab Streaming Layer (data synchronization and saving): download link: https://github.com/sccn/labstreaminglayer
 4. Unity (for realtime data visualization): download link: https://store.unity.com/download-nuo 
 
-## functionalities of the Python Script
+# functionalities of the Python Script
 
-Step 1. setup communication
+## Step 1. setup communication
 
-Step 2. data entry functions
+## Step 2. data entry functions
 
 The first step is to draw user input from the GUI widgets into a single string, which can ten be sent to Arduino code. The following functions are created to draw the inputs. 
 
