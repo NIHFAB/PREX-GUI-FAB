@@ -24,16 +24,14 @@ To implement the GUI
 
 # functionalities of the Python Script
 
-## Step 1. setup communication
+## Step 1: setup communication
 * This step is to set up the communication mode by either cable-based serial or bluetooth.
 ```
 connect_to_exo(comType, address1, address2)
 ```
 
 
-## Step 2. data entry functions
-
-### Prepare the input data
+## Step 2: data entry functions
 * This step is to draw user input from the GUI widgets into a single string, which can then be sent to Arduino controller in exoskeleton. The following functions are created to draw the inputs. 
 
 ### Prepare the input data
@@ -47,6 +45,34 @@ construct_pot_string(leg):..
 ### Send the input data to the micro-controller in the robotic
 ```
 Send_data(data, prefix = ‘Y’, parse = ‘Y’, leg = ‘B’)
+```
+## step 3: data receiving functions
+```
+start_trial();
+```
+### receiving data functions for device calibration mode
+```
+receive_data();
+receive_serial_data();
+receive_ble_data();
+```
+### receiving data functions for walking mode
+```
+receive_and_save_data(); (work together with LSL package)
+receive_ser_data_and_send2LSL();
+receive_ble_data_and_send2LSL();
+```
+## Modular control panel (written in class)
+MainView(tk.Frame): construct the frame with configurable control panels.
+
+Page(tk.Frame): view the selected page
+
+The individual panels are customized to meet the purpose of controlling and communicating with a robotic exoskeleton.
+```
+LandingPage(Page);
+MainMenuPage(Page);
+TestingPage(Page);
+EstimPage(Page);
 ```
 
 # Important Dependencies:
