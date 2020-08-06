@@ -283,5 +283,52 @@ And from there, the data is sent via a Bluetooth dongle to a receiving bluetooth
 While this all might seem rather complicated at first, once you understand these fundamentals, you’ll begin to recognize patterns that you can efficiently adapt for your own project. 
 
 
+# 4. Function to Receive Data from Bluetooth on the Microcontroller
+
+Of course, for this data to be useful, the microcontroller needs an equally sophisticated way to breakdown the encoded information. Let’s look at one implementation of that in AVR-C (Arduino programming). 
+
+In the main while loop of your Arduino code, you might have a function like this that looks for data from an input pin during every loop:
+
+```
+void update_settings() { // this function continuously checks for serial input or bluetooth input
+  if (Serial.available()) {
+    settsLen = Serial.readStringUntil(midMarker); // Python sends # of characters first (gets an int)
+    settsLenI = settsLen.toInt();
+    Serial.print("\nSettings Length: " + String(settsLenI) + "\n");
+    settsStrM = Serial.readStringUntil(endMarker); //
+    Serial.print("Settings String: " + settsStrM + "\n\n");
+    parseSetts(settsLenI, settsStrM);
+  }
+  else if (BLE.available()) {
+    settsLen = BLE.readStringUntil(midMarker);
+    settsLenI = settsLen.toInt();
+    settsStrM = BLE.readStringUntil(endMarker);
+    parseSetts(settsLenI, settsStrM);
+  }
+}
+```
+
+When data is received, parseSetts() is called.
+
+
+# 5. Function to Decode Communication String and Assign Values
+
+Lastly, you need a function to decode that “squished” string of P, I, and D gains. In our implementation, we convert the string a character array, then tokenize the string using strtok(), which essentially picks the string apart using some delimiter. 
+
+```
+void parseSetts(int len, String str) { // parses settings string.
+  char strInChar[len]; // make character array of settings of proper length. len might not be necessary
+  str.toCharArray(strInChar, len + 1);
+```
+... (Nest if logic to direct the values to the proper variables for assignment, depending on what kind of information was sent.)
+
+```
+      kp_torq_s = strtok(NULL, delim);
+      update_double_b(kp_torq_s, kp_torq);
+      allprint("P Gain: " + kp_torq_s + "\n");
+```
+
+And at long last, kp_torq_s, or the 'P Gain' is assigned on the microcontroller. 
+
 # Publications
 If using this software, please cite "An Open Source Graphical User Interface for Wearable Robotic Technology." This work provides an overview of the software and recommendations for how to modify this software for your project. 
