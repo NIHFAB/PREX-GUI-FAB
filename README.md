@@ -1,9 +1,9 @@
-## Table of contents
+## Table of Contents
 * [Overview](#Overview)
-* [System requirements](#system-requirements)
-* [Software installation](#software-installation)
+* [System Requirements](#system-requirements)
+* [Software Installation](#software-installation)
 * [Functionalities of the script](#functionalities-of-the-script)
-* [Step-by-step tutorial](#step-by-step-tutorial)
+* [Step-by-Step Tutorial](#step-by-step-tutorial)
 * [Publications](#publications)
 
 
@@ -12,14 +12,14 @@ Open source code for the NIH PRex Exoskeleton Graphical User Interface (GUI). In
 
 All software is protected under the GNU General Public License, version 3 (GPLv3), found in 'LICENSE.md'. 
 
-# System requirements
+# System Requirements
 1. 64-bit versions of Microsoft Windows 10, 8
 2. 2 GB RAM minimum, 8 GB RAM recommended
 3. 2.5 GB hard disk space, SSD recommended
 4. 1024x768 minimum screen resolution
 5. Python 3.5 or newer
 
-# Software installation
+# Software Installation
 To implement the GUI 
 1. Python: installation link: https://www.python.org/downloads/ (The minimum 3.5 version)
 2. Three additional python libraries
@@ -42,13 +42,13 @@ After downloading the PRex-GUI folder, add a working copy of pylsl (from Lab Str
 # Functionalities of the script
 The script can be categorized into the following blocks to help understand its overall structure. 
 
-## Block 1: setup communication
+## Block 1: Setup Communication
 * This block is to set up the communication mode by either cable-based serial or bluetooth.
 ```
 connect_to_exo(comType, address1, address2)
 ```
 
-## Block 2: data entry functions
+## Block 2: Data Entry Functions
 * This block is to draw user input from the GUI widgets into a single string, which can then be sent to Arduino controller in exoskeleton. The following functions are created to draw the inputs. 
 
 ### Prepare the input data
@@ -63,7 +63,7 @@ construct_pot_string(leg):..
 ```
 Send_data(data, prefix = ‘Y’, parse = ‘Y’, leg = ‘B’)
 ```
-## Block 3: data receiving functions
+## Block 3: Data Receiving Functions
 * This block is to control data collection cycle and perform data collection in calibration mode, and coordinate with lab streaming layer to collect the walking data during walking mode. 
 
 ### start/stop the data collection cycle
@@ -82,7 +82,7 @@ receive_and_save_data(); (work together with LSL package)
 receive_ser_data_and_send2LSL();
 receive_ble_data_and_send2LSL();
 ```
-## Block 4: Modular control panel (written in class)
+## Block 4: Modular Control Panel (written in class)
 
 * MainView is created as a frame to inherit different control pages using TkInter functionalities
 ```
@@ -104,7 +104,7 @@ MainMenuPage(Page);
 TestingPage(Page);
 EstimPage(Page);
 ```
-## Block 5: Real-time data streaming
+## Block 5: Real-Time Data Streaming
 
 * Lab streaming layer interface is created in the script to collect the exoskeleton data from both left and right leg
 ```
@@ -127,14 +127,14 @@ for c in ["TimeRL", "AngleRL", "TorqueRL", "FSR RL", "CurrentRL", "FSM StateRL",
         .append_child_value("label", c)
 outlet_RL = StreamOutlet(info_RL)  # creates outlet for right leg
 ```
-## Block 6: Real-time data visualization
+## Block 6: Real-Time Data Visualization
 
 * Unity interface is created to visualize all sensor data
 ```
 plotting_subprocess = subprocess.Popen(os.path.normpath("./backend_plotting/Static Grip Device.exe"))
 ```
 
-# Step-by-step tutorial
+# Step-by-Step Tutorial
 Before using the code in this repository on a project, it is helpful to understand how information flows in the code. First, let’s look at how data might travel from the graphical user interface (GUI) to an embedded microcontroller (i.e. a Teensy or Arduino).
 
 Say the user wants to send a single numerical value to a Teensy microcontroller over Bluetooth. Let’s see how the software sends the proportional gain (labeled ‘P Gain’) for a PID controller to the microcontroller.
