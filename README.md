@@ -320,7 +320,7 @@ void parseSetts(int len, String str) { // parses settings string.
   char strInChar[len]; // make character array of settings of proper length. len might not be necessary
   str.toCharArray(strInChar, len + 1);
 ```
-... (Nest if logic to direct the values to the proper variables for assignment, depending on what kind of information was sent.)
+... (Nested if logic to direct the values to the proper variables for assignment, depending on what kind of information was sent.)
 
 ```
       kp_torq_s = strtok(NULL, delim);
