@@ -283,7 +283,7 @@ And from there, the data is sent via a Bluetooth dongle to a receiving bluetooth
 While this all might seem rather complicated at first, once you understand these fundamentals, you’ll begin to recognize patterns that you can efficiently adapt for your own project. 
 
 
-# 4. Function to Receive Data from Bluetooth on the Microcontroller
+## 4. Function to Receive Data from Bluetooth on the Microcontroller
 
 Of course, for this data to be useful, the microcontroller needs an equally sophisticated way to breakdown the encoded information. Let’s look at one implementation of that in AVR-C (Arduino programming). 
 
@@ -311,7 +311,7 @@ void update_settings() { // this function continuously checks for serial input o
 When data is received, parseSetts() is called.
 
 
-# 5. Function to Decode Communication String and Assign Values
+## 5. Function to Decode Communication String and Assign Values
 
 Lastly, you need a function to decode that “squished” string of P, I, and D gains. In our implementation, we convert the string a character array, then tokenize the string using strtok(), which essentially picks the string apart using some delimiter. 
 
