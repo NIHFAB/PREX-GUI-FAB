@@ -135,6 +135,153 @@ plotting_subprocess = subprocess.Popen(os.path.normpath("./backend_plotting/Stat
 ```
 
 # Step-by-step tutorial
+Before using the code in this repository on a project, it is helpful to understand how information flows in the code. First, let’s look at how data might travel from the graphical user interface (GUI) to an embedded microcontroller (i.e. a Teensy or Arduino).
+
+Say the user wants to send a single numerical value to a Teensy microcontroller over Bluetooth. Let’s see how the software sends the proportional gain (labeled ‘P Gain’) for a PID controller to the microcontroller.
+
+
+## 1. User Text Entry
+
+Suppose the user needs a text entry widget to enter a value, and additional text identifying what the entry widget is for. Here’s an example of what that looks like in the GUI:
+
+![Image of PGain Button + Text](images4rm/pgain.png)
+
+In Python, a library called Tkinter is used to produce widgets like this for a GUI. For more information on the Tkinter library, see the Software Installation section for a link to further documentation. Here’s what the text entry widget looks like in Python code:
+
+```
+self.PGAIN = tk.Entry(self.uniconframe, width=8)
+self.PGAIN.grid(row=0, column=1)
+self.PGAIN.insert(END, "425")
+```
+
+The first line instantiates an ‘Entry’ class from the Tkinter library as ‘PGAIN.’ (Technically, PGAIN is a child class of the class TestingPage until TestingPage is instantiated, hence ‘self.PGAIN.’) The grid() command tells PGAIN where to appear on the page, and the insert() command inserts starting text in the box, in this case “425.” 
+
+Additionally, here’s what the text label that says ‘P Gain:’ looks like in code:
+
+```
+pLabel = tk.Label(self.uniconframe, text="P Gain: ")
+pLabel.grid(row=0, column=0)
+```
+
+The ‘Label’ class is instantiated as “pLabel” and is told where to appear by grid().
+
+
+## 2. User Control to Send Text
+
+Next, the user needs a way to tell the software to send the data (a P Gain of 425) to the microcontroller. This is accomplished with a button, in this case, the ‘Set Gains’ button:
+
+![Image of Set Gains Button](images4rm/setgains.png)
+
+Here’s what that looks like in code, again using the Tkinter library:
+
+```
+self.SETGAINS = Button(self.uniconframe, relief="groove", overrelief="raised")
+self.SETGAINS["text"] = "Set Gains"
+self.SETGAINS["fg"] = "blue"
+self.SETGAINS["command"] = self.gains
+self.SETGAINS.grid(row=0, column=2, sticky=W, padx=10)
+```
+
+Similar to before, the ‘Button’ class is instantiated as ‘SETGAINS’ as a child object of TestingPage(). The text in the button is set to “Set Gains,” the color is set to blue, and the button commands the function ‘gains.’ 
+
+
+## 3. Function to Pull Text from Entry Widget and Send Text to Microcontroller
+
+A nifty feature of the Tkinter library is that it can link buttons in the user interface to functions in the code. The “Set Gains” button in this example commands the gains() function. When the button is pressed by the user, the gains() function is called, executing some task. In this case, the gains() function (1) changes important states that execute universal control over the code, (2) sends a ‘g’ to tell the microcontroller to expect to receive values containing P, I, and D gains, (3) calls the function construct_gains_string(), and (4) calls send_data() again to actually send the P, I, and D gains.  
+
+```
+def gains(self):
+    # Function makes you mad swole. Run with care
+    # To set gains when running controller tests.
+    global buttons_state
+    buttons_state = "off"
+    data = "g"
+    send_data(data)  # puts teensy into mode to set gains
+
+    gains_data = construct_gains_string()  # send string with gains data
+    send_data(gains_data)
+
+    print(data)
+    print("Gains data: " + gains_data)
+    receive_data()
+```
+
+
+## 3a. Function to Encode Communication String
+
+To really understand what the gains() function does, though, you need to understand the construct_gains_string() function it calls! In essence, it goes and look in the text entry widgets PGAIN, IGAIN, and DGAIN, uses .get() to acquire the values in those text entry widgets, and then squishes all of those values into a single string for transport. That string is called “settsStrG”, as seen in the return statement. 
+
+```
+def construct_gains_string():
+    """This function constructs the settings string 'settsStrG', which contains controller gains. For most controllers,
+    these are PID gains. For adaptive control, these are weight, angle thresholds and desired assistance"""
+    global settsStrG
+    global test_button
+
+    gains_menu_opt = main.p2.CONGAINSOPT.get()
+    if gains_menu_opt == "Torque":
+        gains_controller_opt = 6
+    elif gains_menu_opt == "Impedance":
+        gains_controller_opt = 7
+    elif gains_menu_opt == "Adaptive":
+        gains_controller_opt = 8
+    elif gains_menu_opt == "Speed":
+        gains_controller_opt = 9
+
+    if gains_controller_opt == 6:  # torque controller
+        controller_type = "g/6"
+        kp_torq_s = str(main.p2.PGAIN.get())
+        ip_torq_s = str(main.p2.IGAIN.get())
+        dp_torq_s = str(main.p2.DGAIN.get())
+
+        settsStrG = controller_type + "/" + kp_torq_s + "/" + ip_torq_s + "/" + dp_torq_s
+```
+… (more nested if logic)
+```
+return settsStrG
+```
+
+
+## 3b. Function to Send Data over Bluetooth
+
+So now the user has entered a value for PGAIN, pressed a button to calls the gains() function, which in turn calls construct_gains_string() and organizes the P, I, and D gains into a single string. Now all that’s left is actually sending that data over to the microcontroller. That’s what the function send_data() (called in by the gains() function) does. It simply takes that string, encodes it using a utf-8 format, and either (1) writes it serially to a USB port or (2) uses a client/socket relationship to send the string over Bluetooth. 
+
+```
+def send_data(data, prefix='Y', parse='Y',
+              leg='B'):  # no parse for immediate commands, like stop, walking, standby, etc.
+    """Universal function to send data, either to Bluetooth or wire.
+    'Parse' adds a prefix of data length to the communication."""
+    global comType
+    # leg denotes with leg to send to; L = left, R = right, B = both
+    if comType == 'Ser':
+        if parse == 'Y':  # send length of data before data, and parse with ~ and >
+            data = str(len(data)) + '~' + data + '>'
+        dataB = bytes(data, encoding='utf-8')  # converts strings to binary
+        if leg == 'B':
+            ser.write(dataB)  # left
+            ser1.write(dataB)  # right
+        elif leg == 'L':  # L and R used for calibrating potentiometers
+            ser.write(dataB)
+        elif leg == 'R':
+            ser1.write(dataB)
+
+    elif (comType == 'BLE'):  # and (prefix == 'Y'):
+        if parse == 'Y':
+            data = str(len(data)) + '~' + data + '>'
+        # dataP = ">" + data  # prefixes data with '>', as Arduino expects
+        if leg == 'B':
+            client_socket.send(data)  # left
+            client_socket1.send(data)  # right
+        elif leg == 'L':  # L and R used for calibrating potentiometers
+            client_socket.send(data)
+        elif leg == 'R':
+            client_socket1.send(data)
+```
+
+And from there, the data is sent via a Bluetooth dongle to a receiving bluetooth modem wired to the microcontroller!
+
+While this all might seem rather complicated at first, once you understand these fundamentals, you’ll begin to recognize patterns that you can efficiently adapt for your own project. 
+
 
 # Publications
 If using this software, please cite "An Open Source Graphical User Interface for Wearable Robotic Technology." This work provides an overview of the software and recommendations for how to modify this software for your project. 
