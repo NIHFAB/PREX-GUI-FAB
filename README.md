@@ -110,7 +110,7 @@ EstimPage(Page);
 ```
 lab_recorder_subprocess = subprocess.Popen(os.path.normpath("./LabRecorder/LabRecorder.exe"))
 # == Left Leg LSL ===
-info_LL = StreamInfo('LeftLeg', 'Exoskeleton', 8, 100, 'float32', 'JiComp')  # creates 8 channel LSL stream
+info_LL = StreamInfo('LeftLeg', 'Exoskeleton', 8, 100, 'float32', 'YourComp')  # creates 8 channel LSL stream
 channels = info_LL.desc().append_child("channels") # append some meta-data
 for c in ["TimeLL", "AngleLL", "TorqueLL", "FSR LL", "CurrentLL", "FSM StateLL", "Torque SetpointLL",
           "Position SetpointLL"]:
@@ -119,7 +119,7 @@ for c in ["TimeLL", "AngleLL", "TorqueLL", "FSR LL", "CurrentLL", "FSM StateLL",
 outlet_LL = StreamOutlet(info_LL)  # creates outlet for left leg
 
 # == Right Leg LSL ===
-info_RL = StreamInfo('RightLeg', 'Exoskeleton', 8, 100, 'float32', 'JiComp')  # creates 8 channel LSL stream
+info_RL = StreamInfo('RightLeg', 'Exoskeleton', 8, 100, 'float32', 'YourComp')  # creates 8 channel LSL stream
 channels = info_RL.desc().append_child("channels") # append some meta-data
 for c in ["TimeRL", "AngleRL", "TorqueRL", "FSR RL", "CurrentRL", "FSM StateRL", "Torque SetpointRL",
           "Position SetpointRL"]:
