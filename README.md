@@ -135,7 +135,7 @@ plotting_subprocess = subprocess.Popen(os.path.normpath("./backend_plotting/Stat
 ```
 
 # Step-by-Step Tutorial
-Before using the code in this repository on a project, it is helpful to understand how information flows in the code. To really understand how the software works, one must understand how data might travel from the graphical user interface (GUI) to an embedded microcontroller (i.e. a Teensy or Arduino) and vice versa. Visit the Wiki page (https://github.com/NIHFAB/PREX-GUI-FAB/wiki) for more details.
+Before using the code in this repository on a project, it is helpful to understand how information flows in the code. To really understand how data might travel from the graphical user interface (GUI) to an embedded microcontroller (i.e. a Teensy or Arduino) and vice versa, visit the Wiki page (https://github.com/NIHFAB/PREX-GUI-FAB/wiki).
 
 
 # Publications
