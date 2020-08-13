@@ -61,7 +61,7 @@ construct_pot_string(leg):..
 ```
 ### Send the input data to the micro-controller in the robotic
 ```
-Send_data(data, prefix = ‘Y’, parse = ‘Y’, leg = ‘B’)
+send_data(data, prefix = ‘Y’, parse = ‘Y’, leg = ‘B’)
 ```
 ## Block 3: Data Receiving Functions
 * This block is to control data collection cycle and perform data collection in calibration mode, and coordinate with lab streaming layer to collect the walking data during walking mode. 
